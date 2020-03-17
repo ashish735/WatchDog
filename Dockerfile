@@ -1,4 +1,4 @@
-FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu18.04
+FROM nvidia/cuda:10.1-cudnn7-devel-ubuntu18.04
 
 LABEL ashish kumar
 
@@ -62,8 +62,8 @@ USER ${username}
 
 ARG python_version=3.6
 RUN conda install -y python=${python_version}
-RUN conda install -y tensorflow-gpu==1.14.0
-RUN conda install pytorch==1.2.0 torchvision==0.4.0 cudatoolkit=10.0 -c pytorch
+RUN conda install -y tensorflow-gpu==2.1.0
+#RUN conda install pytorch==1.2.0 torchvision==0.4.0 cudatoolkit=10.0 -c pytorch
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
