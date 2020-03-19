@@ -2,8 +2,8 @@ FROM nvidia/cuda:10.1-cudnn7-devel-ubuntu18.04
 
 LABEL ashish kumar
 
-#ARG username=pytorch_ashish
-#ARG userid=10301
+ARG username=pytorch_ashish
+ARG userid=10301
 
 COPY requirements.txt /requirements.txt
 
@@ -51,12 +51,12 @@ RUN wget --quiet --no-check-certificate https://repo.continuum.io/miniconda/Mini
    # make install; \
     #rm ../node-v10.16.0.tar.gz;
 
-#RUN useradd -u ${userid} -ms /bin/bash -N ${username}
-#RUN chown ${username} $CONDA_DIR -R
+RUN useradd -u ${userid} -ms /bin/bash -N ${username}
+RUN chown ${username} $CONDA_DIR -R
 COPY jupyter_notebook_config.py /
-#RUN chown ${username} jupyter_notebook_config.py
+RUN chown ${username} jupyter_notebook_config.py
 RUN mkdir /home/deep_learning
-#RUN chown ${username} /home/${username}/deep_learning
+RUN chown ${username} /home/${username}/deep_learning
 
 #USER ${username}
 
