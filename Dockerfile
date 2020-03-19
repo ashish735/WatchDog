@@ -2,8 +2,8 @@ FROM nvidia/cuda:10.1-cudnn7-devel-ubuntu18.04
 
 LABEL ashish kumar
 
-ARG username=pytorch_ashish
-ARG userid=10301
+#ARG username=pytorch_ashish
+#ARG userid=10301
 
 COPY requirements.txt /requirements.txt
 
@@ -51,17 +51,17 @@ RUN wget --quiet --no-check-certificate https://repo.continuum.io/miniconda/Mini
    # make install; \
     #rm ../node-v10.16.0.tar.gz;
 
-RUN useradd -u ${userid} -ms /bin/bash -N ${username}
-RUN chown ${username} $CONDA_DIR -R
+#RUN useradd -u ${userid} -ms /bin/bash -N ${username}
+#RUN chown ${username} $CONDA_DIR -R
 COPY jupyter_notebook_config.py /
-RUN chown ${username} jupyter_notebook_config.py
-RUN mkdir /home/${username}/deep_learning
-RUN chown ${username} /home/${username}/deep_learning
+#RUN chown ${username} jupyter_notebook_config.py
+RUN mkdir /home/deep_learning
+#RUN chown ${username} /home/${username}/deep_learning
 
-USER ${username}
+#USER ${username}
 
-ARG python_version=3.6
-RUN conda install -y python=${python_version}
+#ARG python_version=3.6
+RUN conda install -y python=3.6
 RUN conda install -y tensorflow==2.1.0
 #RUN conda install pytorch==1.2.0 torchvision==0.4.0 cudatoolkit=10.0 -c pytorch
 RUN pip install --upgrade pip
@@ -76,7 +76,7 @@ RUN pip install -r requirements.txt
 
 EXPOSE 8888 6006 5901
 
-WORKDIR /home/${username}/deep_learning
+WORKDIR /home/deep_learning
 
 #ENTRYPOINT ["/startup.sh"]
 
