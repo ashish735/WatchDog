@@ -58,7 +58,7 @@ RUN chown ${username} jupyter_notebook_config.py
 RUN mkdir /home/${username}/deep_learning
 RUN chown ${username} /home/${username}/deep_learning
 
-#USER ${username}
+USER ${username}
 
 #ARG python_version=3.6
 RUN conda install -y python=3.6
