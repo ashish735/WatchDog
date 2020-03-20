@@ -55,7 +55,7 @@ RUN useradd -u ${userid} -ms /bin/bash -N ${username}
 RUN chown ${username} $CONDA_DIR -R
 COPY jupyter_notebook_config.py /
 RUN chown ${username} jupyter_notebook_config.py
-RUN mkdir /home/deep_learning
+RUN mkdir /home/${username}/deep_learning
 RUN chown ${username} /home/${username}/deep_learning
 
 #USER ${username}
@@ -76,7 +76,7 @@ RUN pip install -r requirements.txt
 
 EXPOSE 8888 6006 5901
 
-WORKDIR /home/deep_learning
+WORKDIR /home/${username}/deep_learning
 
 #ENTRYPOINT ["/startup.sh"]
 
